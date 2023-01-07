@@ -10,7 +10,7 @@ import { User } from './entities/user.entity';
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
-  
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     const data: Prisma.UserCreateInput = {
       ...createUserDto,
