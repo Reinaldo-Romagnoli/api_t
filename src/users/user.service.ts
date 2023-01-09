@@ -8,7 +8,7 @@ import { User } from './entities/user.entity';
 
 
 @Injectable()
-export class UsersService {
+export class userService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -26,7 +26,7 @@ export class UsersService {
   }
   /*
   findAll() {
-    return `This action returns all users`;
+    return `This action returns all user`;
   }
   */
 
