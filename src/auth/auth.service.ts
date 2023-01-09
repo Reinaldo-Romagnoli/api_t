@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UnauthorizedError } from './errors/unauthorized.error';
 import { User } from '../users/entities/user.entity';
-import { UsersService } from '../users/users.service';
+import { userService } from '../users/user.service';
 import { UserPayload } from './models/UserPayload';
 import { UserToken } from './models/UserToken';
 
@@ -11,7 +11,7 @@ import { UserToken } from './models/UserToken';
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly userService: UsersService,
+    private readonly userService: userService,
   ) {}
 
   async login(user: User): Promise<UserToken> {
