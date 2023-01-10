@@ -9,6 +9,7 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class userService {
+  userModel: any;
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -34,8 +35,15 @@ export class userService {
     return this.prisma.user.findUnique({ where: { email } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async updateUser(params: {
+    where: Prisma.UserWhereUniqueInput;
+    data: Prisma.UserUpdateInput;
+  }) {
+    const { where, data } = params;
+    return this.prisma.user.update({
+      data,
+      where
+    });
   }
 
   remove(id: number) {
